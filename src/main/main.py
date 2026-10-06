@@ -56,11 +56,13 @@ def load_and_clean_users(file_path):
     with open(file_path, 'r') as file:
         reader = csv.reader(file)
         next(reader)
+        user_id = 1
         for row in reader:
             if len(row) == 2 and all(field.strip() for field in row):
                 cursor.execute(
-                    'INSERT INTO users (userId, firstName, lastName) VALUES (?, ?, ?)', (row[0], row[1], row[2])
+                    'INSERT INTO users (userId, firstName, lastName) VALUES (?, ?, ?)', (user_id, row[0], row[1])
                     )
+                user_id +=1
     conn.commit()
 
 
