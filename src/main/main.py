@@ -60,7 +60,6 @@ def load_and_clean_users(file_path):
             if len(row) == 3 and all(row):
                 cursor.execute('INSERT INTO users (userId, firstName, lastName) VALUES (?, ?, ?)', (row[0], row[1], row[2]))
     conn.commit()
-    print("TODO: load_users")
 
 
 # This function will load the callLogs.csv file into the callLogs table, discarding any records with incomplete data
