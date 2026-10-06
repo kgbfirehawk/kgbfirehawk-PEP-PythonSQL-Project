@@ -71,9 +71,9 @@ def load_and_clean_call_logs(file_path):
         reader = csv.reader(file)
         next(reader)
         for row in reader:
-            if len(row) == 6 and all(field.strip() for field in row):
+            if len(row) == 5 and all(field.strip() for field in row):
                 cursor.execute(
-                    'INSERT INTO callLogs (callId, phoneNumber, startTime, endTime, direction, userId) VALUES (?, ?, ?, ?, ?, ?)', (row[0], row[1], row[2], row[3], row[4], row[5])
+                    'INSERT INTO callLogs (phoneNumber, startTime, endTime, direction, userId) VALUES (?, ?, ?, ?, ?)', (row[0], row[1], row[2], row[3], row[4])
                     )
     conn.commit()
 
