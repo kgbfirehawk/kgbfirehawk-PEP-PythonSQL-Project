@@ -60,7 +60,7 @@ def load_and_clean_users(file_path):
         for row in reader:
             if len(row) == 2 and all(field.strip() for field in row):
                 cursor.execute(
-                    'INSERT INTO users (userId, firstName, lastName) VALUES (?, ?, ?)', (user_id, row[0], row[1])
+                    'INSERT INTO users (firstName, lastName) VALUES (?, ?)', (row[0], row[1])
                     )
                 user_id +=1
     conn.commit()
